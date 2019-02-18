@@ -11,16 +11,27 @@
         {
             "name": "Simonov Denis",
             "email": "sim-mail@list.ru"
+        },
+        {
+            "name": "Rovnov Valeriy",
+            "email": "valeriy.rovnov.120875@gmail.com"
         }
     ],
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0.0",
-        "illuminate/support": "5.5.*",
-        "illuminate/container": "5.5.*",
-        "illuminate/database": "5.5.*",
-        "illuminate/events": "5.5.*"
+        "php": ">=7.1.0",
+        "illuminate/support": "5.7.*",
+        "illuminate/container": "5.7.*",
+        "illuminate/database": "5.7.*",
+        "illuminate/events": "5.7.*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Firebird\\FirebirdServiceProvider"
+            ]
+        }
     },
     "autoload":{
         "psr-0": {
