@@ -1,0 +1,21 @@
+{
+    "name": "malder1975/laravel-firebird",
+    "description": "A Firebird database package for the Laravel Framework",
+    "type": "library",
+    "version": "1.0.4",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.x-dev",
+        "illuminate/container": "5.8.x-dev",
+        "illuminate/database": "5.8.x-dev",
+        "illuminate/events": "5.8.x-dev",
+        "doctrine/instantiator": "~1.0.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Firebird\\": "src/"
+        }
+    }
+}
