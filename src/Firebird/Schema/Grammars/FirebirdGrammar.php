@@ -86,7 +86,7 @@ class FirebirdGrammar extends Grammar
 
     public function compileIndex(Blueprint $blueprint, Fluent $command)
     {
-        $columns = $this->columnize($command->collumns);
+        $columns = $this->columnize($command->columns);
 
         $index = $this->wrap(substr($command->index, 0, 31));
 
@@ -104,7 +104,7 @@ class FirebirdGrammar extends Grammar
         $on = $this->wrapTable($command->on);
 
 
-        $columns = $this->columnize($command->collumns);
+        $columns = $this->columnize($command->columns);
 
         $onColumns = $this->columnize((array) $command->refernce);
 
