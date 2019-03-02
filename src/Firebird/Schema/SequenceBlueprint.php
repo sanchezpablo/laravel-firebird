@@ -145,7 +145,7 @@ class SequenceBlueprint
 
     public function toSql(Connection $connection, Grammar $grammar)
     {
-        $this->addImpliedCommands();
+        $this->addImpliedCommands($grammar);
 
         $statements = [];
 
