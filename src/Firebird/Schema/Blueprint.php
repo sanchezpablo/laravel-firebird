@@ -73,7 +73,7 @@ class Blueprint extends BaseBlueprint
     }
 
 
-    protected function addImpliedCommands($grammar)
+    protected function addImpliedCommands(FirebirdGrammar $grammar)
     {
        parent::addImpliedCommands($grammar);
 
