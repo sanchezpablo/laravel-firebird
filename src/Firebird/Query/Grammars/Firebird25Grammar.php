@@ -22,7 +22,7 @@ class Firebird25Grammar extends Grammar
             $column = 'DISTINCT '.$column;
         }
 
-        return 'SELECT '.$aggregate['FUNCTION'].'('.$column.') as "aggregate"';
+        return 'SELECT '.$aggregate['function'].'('.$column.') as "aggregate"';
     }
 
     public function compileGetContext(Builder $query, $namespace, $name)
