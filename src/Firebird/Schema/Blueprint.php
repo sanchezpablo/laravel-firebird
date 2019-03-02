@@ -2,10 +2,7 @@
 
 namespace Firebird\Schema;
 
-use Firebird\Schema\Grammars\FirebirdGrammar;
-use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint as BaseBlueprint;
-use Firebird\Schema\SequenceBlueprint;
 use Illuminate\Database\Schema\Grammars\Grammar;
 
 
@@ -73,7 +70,7 @@ class Blueprint extends BaseBlueprint
     }
 
 
-    protected function addImpliedCommands(FirebirdGrammar $grammar)
+    protected function addImpliedCommands(Grammar $grammar)
     {
        parent::addImpliedCommands($grammar);
 
