@@ -81,14 +81,14 @@ class Firebird25Grammar extends Grammar
     public function compileNextSequenceValue(Builder $query, $sequence = null, $increment = null)
     {
         if (!$sequence) {
-            $sequence = $this->wrap(substr('seq_' . $query->from, 0, 31));
+            $sequence = $this->wrap(substr('gen_' . $query->from, 0, 31));
         }
 
         if ($increment) {
             return "SELECT GEN_ID({$sequence}, {$increment}) AS ID FROM RDB\$DATABASE";
         }
 
-        return "SELECT NEXT VALUE FOR {$sequence} AS ID FROM RDB\$DATABASE";
+        return "GEN_ID({$sequence}, {$increment}) AS ID FROM RDB\$DATABASE";
     }
 
     protected function compileOffset(Builder $query, $offset)

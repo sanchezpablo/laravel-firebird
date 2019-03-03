@@ -345,14 +345,14 @@ class FirebirdGrammar extends Grammar
 
     public function compileSequenceForTable(Blueprint $blueprint, Fluent $command)
     {
-        $sequence = $this->wrap(substr('seq_' . $blueprint->getTable(), 0, 31));
+        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable(), 0, 31));
 
         return "CREATE SEQUENCE {$sequence}";
     }
 
     public function compileDropSequenceForTable(Blueprint $blueprint, Fluent $command)
     {
-        $sequenceName = substr('seq_' . $blueprint->getTable(), 0, 31);
+        $sequenceName = substr('gen_' . $blueprint->getTable(), 0, 31);
 
         $sequence = $this->wrap($sequenceName);
 
@@ -374,7 +374,7 @@ class FirebirdGrammar extends Grammar
 
         $collumn = $this->wrap($command->columnname);
 
-        $sequence = $this->wrap(substr('seq_' . $blueprint->getTable(), 0, 31));
+        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable(), 0, 31));
 
 
 
