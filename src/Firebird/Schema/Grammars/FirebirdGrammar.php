@@ -366,15 +366,15 @@ class FirebirdGrammar extends Grammar
         return $sql;
     }
 
-    public function compileTriggerForAutoincrement(Blueprint $blueprint, SequenceBlueprint $sequenceBlueprint, Fluent $command)
+    public function compileTriggerForAutoincrement(Blueprint $blueprint, Fluent $command)
     {
         $table = $this->wrapTable($blueprint);
 
-        $trigger = $this->wrap(substr('tr_' . $blueprint->getTable() . '_bi', 0, 31));
+        $trigger = $this->wrap(substr('TR_' . $blueprint->getTable() . '_BI', 0, 31));
 
         $column = $this->wrap($command->columnname);
 
-        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable() . '_id', 0, 31));
+        $sequence = $this->wrap(substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31));
 
 
 
@@ -383,7 +383,7 @@ class FirebirdGrammar extends Grammar
         $sql .= "AS\n";
         $sql .= "BEGIN\n";
         $sql .= "  IF (NEW.{$column} IS NULL) THEN\n";
-        $sql .= "    NEW.{$column} = GEN_ID({$sequence}, " . $sequenceBlueprint->getIncrement() . ');\n';
+        $sql .= "    NEW.{$column} = GEN_ID({$sequence}, 1);\n";
         $sql .= 'END';
 
         return $sql;
