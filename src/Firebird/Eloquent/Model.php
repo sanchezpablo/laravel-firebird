@@ -14,7 +14,7 @@ class Model extends BaseModel
 
     protected function getSequence()
     {
-        $autoSequence = substr('gen_' . $this->getTable(), 0, 31);
+        $autoSequence = substr('GEN_' . $this->getTable() . '_ID', 0, 31);
         return $this->sequence ? $this->sequence : $autoSequence;
     }
 

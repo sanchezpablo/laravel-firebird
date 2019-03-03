@@ -345,14 +345,14 @@ class FirebirdGrammar extends Grammar
 
     public function compileSequenceForTable(Blueprint $blueprint, Fluent $command)
     {
-        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable(), 0, 31));
+        $sequence = $this->wrap(substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31));
 
         return "CREATE SEQUENCE {$sequence}";
     }
 
     public function compileDropSequenceForTable(Blueprint $blueprint, Fluent $command)
     {
-        $sequenceName = substr('gen_' . $blueprint->getTable(), 0, 31);
+        $sequenceName = substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31);
 
         $sequence = $this->wrap($sequenceName);
 
@@ -370,11 +370,11 @@ class FirebirdGrammar extends Grammar
     {
         $table = $this->wrapTable($blueprint);
 
-        $trigger = $this->wrap(substr('tr_' . $blueprint->getTable() . '_bi', 0, 31));
+        $trigger = $this->wrap(substr('TR_' . $blueprint->getTable() . '_BI', 0, 31));
 
         $collumn = $this->wrap($command->columnname);
 
-        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable(), 0, 31));
+        $sequence = $this->wrap(substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31));
 
 
 
@@ -383,7 +383,7 @@ class FirebirdGrammar extends Grammar
         $sql .= "AS\n";
         $sql .= "BEGIN\n";
         $sql .= "  IF (NEW.{$collumn} IS NULL) THEN\n";
-        $sql .= "    NEW.{$collumn} = NEXT VALUE FOR {$sequence};\n";
+        $sql .= "    NEW.{$collumn} = GEN_ID({$sequence}, {$blueprint->getIncrement()});\n";
         $sql .= 'END';
 
         return $sql;
