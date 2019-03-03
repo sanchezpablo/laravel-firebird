@@ -370,11 +370,11 @@ class FirebirdGrammar extends Grammar
     {
         $table = $this->wrapTable($blueprint);
 
-        $trigger = $this->wrap(substr('TR_' . $blueprint->getTable() . '_BI', 0, 31));
+        $trigger = $this->wrap(substr('tr_' . $blueprint->getTable() . '_bi', 0, 31));
 
-        $collumn = $this->wrap($command->columnname);
+        $column = $this->wrap($command->columnname);
 
-        $sequence = $this->wrap(substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31));
+        $sequence = $this->wrap(substr('gen_' . $blueprint->getTable() . '_id', 0, 31));
 
 
 
@@ -382,8 +382,8 @@ class FirebirdGrammar extends Grammar
         $sql .= "ACTIVE BEFORE INSERT\n";
         $sql .= "AS\n";
         $sql .= "BEGIN\n";
-        $sql .= "  IF (NEW.{$collumn} IS NULL) THEN\n";
-        $sql .= "    NEW.{$collumn} = GEN_ID({$sequence}, " . $sequenceBlueprint->getIncrement() . ');\n';
+        $sql .= "  IF (NEW.{$column} IS NULL) THEN\n";
+        $sql .= "    NEW.{$column} = GEN_ID({$sequence}, " . $sequenceBlueprint->getIncrement() . ');\n';
         $sql .= 'END';
 
         return $sql;
