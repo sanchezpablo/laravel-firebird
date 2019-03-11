@@ -11,7 +11,7 @@
         "illuminate/container": "5.8.x",
         "illuminate/database": "5.8.x",
         "illuminate/events": "5.8.x",
-        "doctrine/instantiator": "~1.1.0"
+        "doctrine/instantiator": "~1.0.4"
     },
     "autoload": {
         "psr-4": {
