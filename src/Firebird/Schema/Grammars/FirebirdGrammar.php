@@ -364,7 +364,7 @@ class FirebirdGrammar extends Grammar
         $sql .= 'AS' . "\n";
         $sql .= 'BEGIN' . "\n";
         $sql .= "  IF(EXISTS(SELECT * FROM RDB\$TRIGGERS WHERE RDB\$TRIGGER_NAME = '{$triggerName}')) THEN" ."\n";
-        $sql .= "     EXECUTE STATEMENT 'DROP SEQUENCE {$sequenceTr}';" . "\n";
+        $sql .= "     EXECUTE STATEMENT 'DROP TRIGGER {$sequenceTr}';" . "\n";
         $sql .= "  IF(EXISTS(SELECT * FROM RDB\$GENERATORS WHERE RDB\$GENERATOR_NAME = '{$sequenceName}')) THEN" . "\n";
         $sql .= "     EXECUTE STATEMENT 'DROP SEQUENCE {$sequence}';" . "\n";
         $sql .= 'END';
