@@ -352,6 +352,10 @@ class FirebirdGrammar extends Grammar
 
     public function compileDropSequenceForTable(Blueprint $blueprint, Fluent $command)
     {
+        $triggerName = substr('TR_' . $blueprint->getTable() . '_BI', 0, 31);
+
+        $sequenceTr = $this->wrap($triggerName);
+
         $sequenceName = substr('GEN_' . $blueprint->getTable() . '_ID', 0, 31);
 
         $sequence = $this->wrap($sequenceName);
@@ -359,6 +363,8 @@ class FirebirdGrammar extends Grammar
         $sql = 'EXECUTE BLOCK' . "\n";
         $sql .= 'AS' . "\n";
         $sql .= 'BEGIN' . "\n";
+        $sql .= "  IF(EXISTS(SELECT * FROM RDB\$TRIGGERS WHERE RDB\$TRIGGER_NAME = '{$triggerName}')) THEN" ."\n";
+        $sql .= "     EXECUTE STATEMENT 'DROP SEQUENCE {$sequenceTr}';" . "\n";
         $sql .= "  IF(EXISTS(SELECT * FROM RDB\$GENERATORS WHERE RDB\$GENERATOR_NAME = '{$sequenceName}')) THEN" . "\n";
         $sql .= "     EXECUTE STATEMENT 'DROP SEQUENCE {$sequence}';" . "\n";
         $sql .= 'END';

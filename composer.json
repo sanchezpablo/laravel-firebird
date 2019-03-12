@@ -1,7 +1,7 @@
 {
     "name": "malder1975/laravel-firebird",
     "description": "A Firebird database package for the Laravel Framework",
-    "version": "1.2.0",
+    "version": "1.1.0",
     "license": "MIT",
     "prefer-stable": true,
     "minimum-stability": "dev",
@@ -11,7 +11,7 @@
         "illuminate/container": "5.8.x",
         "illuminate/database": "5.8.x",
         "illuminate/events": "5.8.x",
-        "doctrine/instantiator": "~1.0.4"
+        "doctrine/instantiator": "~1.0.3"
     },
     "autoload": {
         "psr-4": {
