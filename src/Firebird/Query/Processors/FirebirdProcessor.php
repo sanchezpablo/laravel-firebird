@@ -28,7 +28,7 @@ class FirebirdProcessor extends Processor
 
     public function processNextSequenceValue(Builder $query, $sql)
     {
-        $results = $query->getConnection()->selectFromWriteConnection($sql);
+        $results = $query->getConnection()->selectFromWriteConnection($sql)[0];
 
         $result = (array) $results[0];
 
