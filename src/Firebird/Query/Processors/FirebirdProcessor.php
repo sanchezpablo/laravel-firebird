@@ -30,7 +30,7 @@ class FirebirdProcessor extends Processor
     {
         $results = $query->getConnection()->selectFromWriteConnection($sql)[0];
 
-        $result = (array) $results[0];
+        $result = (array) $results;
 
         $id = $result['ID'];
 
