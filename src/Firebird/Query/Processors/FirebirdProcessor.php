@@ -19,7 +19,7 @@ class FirebirdProcessor extends Processor
 
         $sequence = $sequence ?: 'ID';
 
-        $result = (array) $results[0];
+        $result = (array) $results;
 
         $id = is_object($result) ? $result->{$sequence} : $result[$sequence];
 
