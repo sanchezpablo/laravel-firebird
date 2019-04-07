@@ -1,5 +1,5 @@
 {
-    "name": "malder1975/laravel-firebird",
+    "name": "sanchezpablo/laravel-firebird",
     "description": "A Firebird database package for the Laravel Framework",
     "version": "1.1.0",
     "license": "MIT",
