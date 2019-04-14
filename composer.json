@@ -17,12 +17,5 @@
         "psr-4": {
             "Firebird\\": "src"
         }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Firebird\\FirebirdServiceProvider"
-            ]
-        }
     }
 }
